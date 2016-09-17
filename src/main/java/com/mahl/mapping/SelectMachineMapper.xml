@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mahl.dao.SelectMachineDao" >
+
+  <resultMap id="BaseResultMap" type="com.mahl.pojo.SelectMachine" >
+    <result column="machine_id" property="machineId" jdbcType="INTEGER" />
+    <result column="employee_name" property="employeeName" jdbcType="NVARCHAR" />
+    <result column="first_grade" property="firstGrade" jdbcType="INTEGER" />
+    <result column="second_grade" property="secondGrade" jdbcType="INTEGER" />
+    <result column="third_grade" property="thirdGrade" jdbcType="INTEGER" />
+    <result column="machine_state" property="machineState" jdbcType="BIT" />
+    <result column="run_time" property="runTime" jdbcType="INTEGER" />
+    <result column="idle_time" property="idleTime" jdbcType="INTEGER" />
+    <result column="error_time" property="errorTime" jdbcType="INTEGER" />
+    <result column="record_time" property="recordTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  <insert id="insert" parameterType="com.mahl.pojo.SelectMachine" >
+    insert into View_SelectMachine (machine_id, employee_name, first_grade, 
+      second_grade, third_grade, machine_state, 
+      run_time, idle_time, error_time, 
+      record_time)
+    values (#{machineId,jdbcType=INTEGER}, #{employeeName,jdbcType=NVARCHAR}, #{firstGrade,jdbcType=INTEGER}, 
+      #{secondGrade,jdbcType=INTEGER}, #{thirdGrade,jdbcType=INTEGER}, #{machineState,jdbcType=BIT}, 
+      #{runTime,jdbcType=INTEGER}, #{idleTime,jdbcType=INTEGER}, #{errorTime,jdbcType=INTEGER}, 
+      #{recordTime,jdbcType=TIMESTAMP})
+  </insert>
+  
+  
+  <select id="getAll" resultMap = "BaseResultMap">
+ 	select * from View_SelectMachine order by machine_id  
+ </select>
+  
+
+</mapper>
