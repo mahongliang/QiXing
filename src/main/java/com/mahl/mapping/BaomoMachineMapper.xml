@@ -15,21 +15,25 @@
 		<result column="error_time" property="errorTime" jdbcType="INTEGER" />
 		<result column="record_time" property="recordTime" jdbcType="TIMESTAMP" />
 	</resultMap>
-	<insert id="insert" parameterType="com.mahl.pojo.BaomoMachine">
-		insert into View_baomoMachine (machine_id, employee_name, card_id,
-		machine_output, machine_state, run_time,
-		idle_time, error_time, record_time
-		)
-		values (#{machineId,jdbcType=INTEGER}, #{employeeName,jdbcType=NVARCHAR},
-		#{cardId,jdbcType=NVARCHAR},
-		#{machineOutput,jdbcType=INTEGER}, #{machineState,jdbcType=BIT}, #{runTime,jdbcType=INTEGER},
-		#{idleTime,jdbcType=INTEGER}, #{errorTime,jdbcType=INTEGER},
-		#{recordTime,jdbcType=TIMESTAMP}
-		)
-	</insert>
+	
+	<sql id="Base_Column_List" >
+    	machine_id, employee_name, card_id, machine_output,
+    	machine_state, run_time, idle_time, error_time, record_time
+  	</sql>
 
-	<select id="getAll" resultMap="BaseResultMap">
-		select * from View_baomoMachine order by machine_id
+	<select id="findByPage" resultMap = "BaseResultMap" parameterType="com.mahl.dto.PageHelper">	
+		SELECT  <include refid="Base_Column_List"></include>
+		FROM    ( SELECT TOP ( #{end} )
+		                    ROW_NUMBER() OVER ( ORDER BY dbWorkShop3.dbo.View_baomoMachine.machine_id ) AS rownum ,
+		                    *
+		          FROM      dbWorkShop3.dbo.View_baomoMachine
+		        ) AS temp
+		WHERE   temp.rownum > ( #{start} )
+		ORDER BY temp.machine_id
+	</select>
+	
+	<select id="getTotalRows" resultType="java.lang.Long">
+		select count(1) from View_baomoMachine;	
 	</select>
 
 </mapper>

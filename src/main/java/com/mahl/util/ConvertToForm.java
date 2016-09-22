@@ -1,12 +1,11 @@
 package com.mahl.util;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mahl.form.BaomoMachineForm;
-import com.mahl.form.SelectMachineForm;
-import com.mahl.form.WindingMachineForm;
+import com.mahl.dto.BaomoMachineForm;
+import com.mahl.dto.SelectMachineForm;
+import com.mahl.dto.WindingMachineForm;
 import com.mahl.pojo.BaomoMachine;
 import com.mahl.pojo.SelectMachine;
 import com.mahl.pojo.WindingMachine;
@@ -67,7 +66,7 @@ public class ConvertToForm {
 		form.setMachineId(machine.getMachineId());
 		form.setEmployeeName(machine.getEmployeeName());
 		
-		form.setCardid(machine.getCardId());
+		form.setCardId(machine.getCardId());
 		
 		form.setMachineOutput(machine.getMachineOutput());
 		

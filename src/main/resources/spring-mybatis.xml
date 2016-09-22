@@ -16,13 +16,13 @@
 	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 
-	<!-- 自动扫描 -->  
+	<!-- 自动扫描 -->
 	<Context:component-scan base-package="com.mahl.*" />
 
- 	<!-- 引入配置文件 -->  
-<!-- 	<bean id="jdbcProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
-<!-- 		<property name="location" value="classpath:jdbc.properties"></property> -->
-<!-- 	</bean> -->
+	<!-- 引入配置文件 -->
+	<!-- <bean id="jdbcProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+	<!-- <property name="location" value="classpath:jdbc.properties"></property> -->
+	<!-- </bean> -->
 
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
@@ -32,7 +32,8 @@
 			<value>com.microsoft.sqlserver.jdbc.SQLServerDriver</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:sqlserver://114.55.224.94:1433;databaseName=dbWorkShop3</value>
+			<value>jdbc:sqlserver://114.55.224.94:1433;databaseName=dbWorkShop3
+			</value>
 		</property>
 		<property name="user">
 			<value>sa</value>
@@ -67,10 +68,10 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 
-<!-- 	<bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> -->
-<!-- 		<property name="mapperInterface" value="com.mahl.dao.IUserDao" /> -->
-<!-- 		<property name="sqlSessionFactory" ref="sqlSessionFactory" /> -->
-<!-- 	</bean> -->
+	<!-- <bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> -->
+	<!-- <property name="mapperInterface" value="com.mahl.dao.IUserDao" /> -->
+	<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory" /> -->
+	<!-- </bean> -->
 
 
 	<!-- <tx:annotation-driven/> -->
@@ -80,11 +81,6 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<aop:config>
-		<aop:pointcut id="mypointcut" expression="bean(userManager)" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="mypointcut" />
-	</aop:config>
-
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="select*" read-only="true" />
@@ -93,5 +89,9 @@
 		</tx:attributes>
 	</tx:advice>
 
+	<aop:config>
+		<aop:pointcut id="mypointcut" expression="execution(* com.mahl.service.IUserAction.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="mypointcut" />
+	</aop:config>
 
 </beans>

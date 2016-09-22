@@ -13,33 +13,33 @@
   </sql>
   
   <select id="selectByNameAndPwd" resultMap="BaseResultMap" parameterType="com.mahl.pojo.User">
-  	 select 
+  	SELECT 
     <include refid="Base_Column_List" />
-    from test
-    where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+    FROM [dbWorkShop3].[dbo].[user]
+    WHERE username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
   </select>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from test
+    from user
     where id = #{id,jdbcType=INTEGER}
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from test
+    delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
   
   <insert id="insert" parameterType="com.mahl.pojo.User" >
-    insert into test (username, password
+    insert into user (username, password
       )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
   
   <insert id="insertSelective" parameterType="com.mahl.pojo.User" >
-    insert into test
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -65,7 +65,7 @@
   </insert>
   
   <update id="updateByPrimaryKeySelective" parameterType="com.mahl.pojo.User" >
-    update test
+    update user
     <set >
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
@@ -78,7 +78,7 @@
   </update>
   
   <update id="updateByPrimaryKey" parameterType="com.mahl.pojo.User" >
-    update test
+    update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

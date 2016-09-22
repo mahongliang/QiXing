@@ -1,4 +1,3 @@
-
 package com.mahl.pojo;
 import java.util.Date;
 
@@ -92,4 +91,13 @@ public class BaomoMachine {
     public void setRecordTime(Date recordTime) {
         this.recordTime = recordTime;
     }
+
+	@Override
+	public String toString() {
+		return "BaomoMachine [machineId=" + machineId + ", employeeName=" + employeeName + ", cardId=" + cardId
+				+ ", machineOutput=" + machineOutput + ", machineState=" + machineState + ", runTime=" + runTime
+				+ ", idleTime=" + idleTime + ", errorTime=" + errorTime + ", recordTime=" + recordTime + "]";
+	}
+    
+    
 }

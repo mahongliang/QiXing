@@ -1,7 +1,6 @@
 package com.mahl.pojo;
 
 import java.util.Date;
-
 public class WindingMachine {
     private Integer machineId;
 
@@ -103,4 +102,14 @@ public class WindingMachine {
     public void setRecordTime(Date recordTime) {
         this.recordTime = recordTime;
     }
+
+	@Override
+	public String toString() {
+		return "WindingMachine [machineId=" + machineId + ", employeeName=" + employeeName + ", cardId=" + cardId
+				+ ", ctype=" + ctype + ", mahicneOutput=" + mahicneOutput + ", machineState=" + machineState
+				+ ", runTime=" + runTime + ", idleTime=" + idleTime + ", errorTime=" + errorTime + ", recordTime="
+				+ recordTime + "]";
+	}
+    
+    
 }

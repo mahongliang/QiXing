@@ -1,5 +1,4 @@
 package com.mahl.pojo;
-
 public class User {
     private Integer id;
 

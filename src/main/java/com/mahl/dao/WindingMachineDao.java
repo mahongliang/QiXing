@@ -3,15 +3,15 @@ package com.mahl.dao;
 
 import java.util.List;
 
+import com.mahl.dto.PageHelper;
 import com.mahl.pojo.WindingMachine;
 
 
 public interface WindingMachineDao {
-    int insert(WindingMachine record);
 
-    int insertSelective(WindingMachine record);
-   
+	List<WindingMachine> findByPage(PageHelper page);
+
+	long getTotalRows();
     
-    List<WindingMachine> getAll();
 
 }

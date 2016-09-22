@@ -1,5 +1,4 @@
 package com.mahl.pojo;
-
 import java.util.Date;
 
 public class SelectMachine {
@@ -103,4 +102,14 @@ public class SelectMachine {
     public void setRecordTime(Date recordTime) {
         this.recordTime = recordTime;
     }
+
+	@Override
+	public String toString() {
+		return "SelectMachine [machineId=" + machineId + ", employeeName=" + employeeName + ", firstGrade=" + firstGrade
+				+ ", secondGrade=" + secondGrade + ", thirdGrade=" + thirdGrade + ", machineState=" + machineState
+				+ ", runTime=" + runTime + ", idleTime=" + idleTime + ", errorTime=" + errorTime + ", recordTime="
+				+ recordTime + "]";
+	}
+    
+    
 }

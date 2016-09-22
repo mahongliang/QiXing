@@ -2,14 +2,24 @@ package com.mahl.service;
 
 import java.util.List;
 
-
-import com.mahl.pojo.SelectMachine;
-import com.mahl.pojo.WindingMachine;
+import com.mahl.dto.BaomoMachineForm;
+import com.mahl.dto.PageHelper;
+import com.mahl.dto.SelectMachineForm;
+import com.mahl.dto.WindingMachineForm;
 
 public interface IUserAction {
 
-	List<SelectMachine> getSelectMachines();
+	List<SelectMachineForm> getSelectMachinesByPage(PageHelper page);
 	
-	List<WindingMachine> getWindingMachines();
+	List<WindingMachineForm> getWindingMachinesByPage(PageHelper page);
+	
+	List<BaomoMachineForm> getBaomoMachinesByPage(PageHelper page);
+
+	long getSelectTotalRows();
+	
+	long getWindingTotalRows();
+	
+	long getBaomoTotalRows();
+
 	
 }

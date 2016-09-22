@@ -4,13 +4,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>主页</title>
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/login.css" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/login.js"></script>
+<style type="text/css">
+body{
+	background-image: url(<%=request.getContextPath()%>/resources/image/22.jpg);
+  	background-color: #000000;
+  	background-size: cover;
+}
+</style>
 </head>
 <body>
 
-<h1><a href="/QiXing/listSelect">显示分选机</a></h1>
-<h1><a href="/QiXing/listWinding">显示卷绕机</a></h1>
-<h1><a href="/QiXing/listBaomo">显示包膜机</a></h1>
+<div id="login">
+	<p>管理员帐号：<input type="text" id="username" class="textbox"></p>
+	<p>管理员密码：<input type="password" id="password" class="textbox"></p>
+</div>
+
+<div id="btn">
+	<a href="#" class="easyui-linkbutton">登录</a>
+</div>
 
 </body>
+
 </html>

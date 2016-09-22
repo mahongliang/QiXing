@@ -20,27 +20,25 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		machine_id, employee_name, card_id, c_type, mahicne_output, machine_state,
-		run_time,
-		idle_time, error_time, record_time
+		machine_id, employee_name, card_id, c_type, mahicne_output, 
+		machine_state,run_time,idle_time, error_time, record_time
 	</sql>
 
-	<insert id="insert" parameterType="com.mahl.pojo.WindingMachine">
-		insert into View_WindingMachine (machine_id, employee_name, card_id,
-		c_type, mahicne_output, machine_state,
-		run_time, idle_time, error_time,
-		record_time)
-		values (#{machineId,jdbcType=INTEGER}, #{employeeName,jdbcType=NVARCHAR},
-		#{cardId,jdbcType=NVARCHAR},
-		#{cType,jdbcType=NVARCHAR}, #{mahicneOutput,jdbcType=INTEGER}, #{machineState,jdbcType=BIT},
-		#{runTime,jdbcType=INTEGER}, #{idleTime,jdbcType=INTEGER},
-		#{errorTime,jdbcType=INTEGER},
-		#{recordTime,jdbcType=TIMESTAMP})
-	</insert>
-
-	<select id="getAll" resultMap="BaseResultMap">
-		select * from View_WindingMachine order by machine_id
+	<select id="findByPage" resultMap = "BaseResultMap" parameterType="com.mahl.dto.PageHelper">	
+		SELECT  <include refid="Base_Column_List"></include>
+		FROM    ( SELECT TOP ( #{end} )
+		                    ROW_NUMBER() OVER ( ORDER BY View_WindingMachine.machine_id ) AS rownum ,
+		                    *
+		          FROM      View_WindingMachine
+		        ) AS temp
+		WHERE   temp.rownum > ( #{start} )
+		ORDER BY temp.machine_id
 	</select>
+	
+	<select id="getTotalRows" resultType="java.lang.Long">
+		select count(1) from View_WindingMachine;	
+	</select>
+	
 
 
 </mapper>
