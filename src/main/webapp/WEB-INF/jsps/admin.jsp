@@ -17,18 +17,17 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/easyui/jquery.easyui.min.js"></script>
 
-
 </head>
 <body class="easyui-layout">
 
-<div data-options="region:'north',title:'header',split:true,noheader:true" style="height:60px;background:#666;">
-	<div class="logo">后台管理系统</div>
+<div data-options="region:'north',title:'header',split:true,noheader:true" style="height:60px;background:green;">
+	<div class="logo">数据与生产云管理服务系统</div>
 	<div class="logout">您好，<%=user.getUsername() %> | <a href="<%=request.getContextPath() %>/admin/logout">退出</a></div>
 </div>   
-<div data-options="region:'south',title:'footer',split:true,noheader:true" style="height:35px;line-height:30px;text-align:center;">
-	&copy;2010-2016杭州电子科技大学
+<div data-options="region:'south',title:'footer',split:true,noheader:true" style="height:40px;line-height:30px;text-align:center;">
+2010-2016杭州电子科技大学
 </div>    
-<div data-options="region:'west',title:'导航',split:true,iconCls:'icon-world'" style="width:180px;padding:10px;">
+<div data-options="region:'west',title:'导航',split:true,iconCls:'icon-world'" style="width:220px;padding:10px;">
 <ul id="nav"></ul>
 </div>   
 <div data-options="region:'center'" style="overflow:hidden;">

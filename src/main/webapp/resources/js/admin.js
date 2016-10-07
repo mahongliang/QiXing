@@ -32,7 +32,8 @@ $(function() {
 					"myurl" : "/QiXing/admin/listselect"
 				},
 			} ]
-		} ],
+		}
+		],
 		onClick : function(node) {
 			if (node.attributes.myurl) {
 				if ($('#tabs').tabs('exists', node.text)) {

@@ -8,6 +8,9 @@
 	}
 	setInterval("reloadselect()", 10000);
 </script>
+<style>
+    .datagrid-header-row td{background-color:red;color:#fff}
+</style>
 
 <!-- 用户信息列表 title="用户管理" -->
 

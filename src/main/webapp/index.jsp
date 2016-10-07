@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>后台登录页面</title>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/easyui/themes/icon.css">
@@ -22,6 +22,9 @@ body{
 </head>
 <body>
 
+<div id="content">
+	<h1>七星电容器数据与生产云管理服务系统</h1>
+</div>
 <div id="login">
 	<p>管理员帐号：<input type="text" id="username" class="textbox"></p>
 	<p>管理员密码：<input type="password" id="password" class="textbox"></p>
