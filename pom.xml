@@ -137,17 +137,11 @@
 
 
 
-		<!-- mysql驱动 -->
-		<!-- <dependency> -->
-		<!-- <groupId>mysql</groupId> -->
-		<!-- <artifactId>mysql-connector-java</artifactId> -->
-		<!-- <version>5.1.30</version> -->
-		<!-- </dependency> -->
-
+		<!-- gaussdb驱动 -->
 		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>4.0</version>
+			<groupId>com.huaweicloud.gaussdb</groupId>
+			<artifactId>opengaussjdbc</artifactId>
+			<version>506.0.T35</version>
 		</dependency>
 		<!-- c3p0数据源 -->
 		<dependency>
@@ -198,7 +192,17 @@
 	</dependencies>
 	<build>
 		<finalName>QiXing</finalName>
-
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
