@@ -15,7 +15,7 @@
   <select id="selectByNameAndPwd" resultMap="BaseResultMap" parameterType="com.mahl.pojo.User">
   	SELECT 
     <include refid="Base_Column_List" />
-    FROM [dbWorkShop3].[dbo].[user]
+    FROM "user"
     WHERE username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
   </select>
   

@@ -6,13 +6,13 @@
 	<resultMap id="BaseResultMap" type="com.mahl.pojo.WindingMachine">
 		<result column="machine_id" property="machineId" jdbcType="INTEGER" />
 		<result column="employee_name" property="employeeName"
-			jdbcType="NVARCHAR" />
-		<result column="card_id" property="cardId" jdbcType="NVARCHAR" />
-		<result column="c_type" property="ctype" jdbcType="NVARCHAR" />
+			jdbcType="VARCHAR" />
+		<result column="card_id" property="cardId" jdbcType="VARCHAR" />
+		<result column="c_type" property="ctype" jdbcType="VARCHAR" />
 		<result column="mahicne_output" property="mahicneOutput"
 			jdbcType="INTEGER" />
 		<result column="machine_state" property="machineState"
-			jdbcType="BIT" />
+			jdbcType="BOOLEAN" />
 		<result column="run_time" property="runTime" jdbcType="INTEGER" />
 		<result column="idle_time" property="idleTime" jdbcType="INTEGER" />
 		<result column="error_time" property="errorTime" jdbcType="INTEGER" />
@@ -26,13 +26,9 @@
 
 	<select id="findByPage" resultMap = "BaseResultMap" parameterType="com.mahl.dto.PageHelper">	
 		SELECT  <include refid="Base_Column_List"></include>
-		FROM    ( SELECT TOP ( #{end} )
-		                    ROW_NUMBER() OVER ( ORDER BY View_WindingMachine.machine_id ) AS rownum ,
-		                    *
-		          FROM      View_WindingMachine
-		        ) AS temp
-		WHERE   temp.rownum > ( #{start} )
-		ORDER BY temp.machine_id
+		FROM    View_WindingMachine
+		ORDER BY machine_id
+		LIMIT #{rows} OFFSET #{start}
 	</select>
 	
 	<select id="getTotalRows" resultType="java.lang.Long">

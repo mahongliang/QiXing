@@ -4,12 +4,12 @@
 	<resultMap id="BaseResultMap" type="com.mahl.pojo.BaomoMachine">
 		<result column="machine_id" property="machineId" jdbcType="INTEGER" />
 		<result column="employee_name" property="employeeName"
-			jdbcType="NVARCHAR" />
-		<result column="card_id" property="cardId" jdbcType="NVARCHAR" />
+			jdbcType="VARCHAR" />
+		<result column="card_id" property="cardId" jdbcType="VARCHAR" />
 		<result column="machine_output" property="machineOutput"
 			jdbcType="INTEGER" />
 		<result column="machine_state" property="machineState"
-			jdbcType="BIT" />
+			jdbcType="BOOLEAN" />
 		<result column="run_time" property="runTime" jdbcType="INTEGER" />
 		<result column="idle_time" property="idleTime" jdbcType="INTEGER" />
 		<result column="error_time" property="errorTime" jdbcType="INTEGER" />
@@ -23,13 +23,9 @@
 
 	<select id="findByPage" resultMap = "BaseResultMap" parameterType="com.mahl.dto.PageHelper">	
 		SELECT  <include refid="Base_Column_List"></include>
-		FROM    ( SELECT TOP ( #{end} )
-		                    ROW_NUMBER() OVER ( ORDER BY dbWorkShop3.dbo.View_baomoMachine.machine_id ) AS rownum ,
-		                    *
-		          FROM      dbWorkShop3.dbo.View_baomoMachine
-		        ) AS temp
-		WHERE   temp.rownum > ( #{start} )
-		ORDER BY temp.machine_id
+		FROM    View_baomoMachine
+		ORDER BY machine_id
+		LIMIT #{rows} OFFSET #{start}
 	</select>
 	
 	<select id="getTotalRows" resultType="java.lang.Long">

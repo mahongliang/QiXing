@@ -20,26 +20,25 @@
 	<Context:component-scan base-package="com.mahl.*" />
 
 	<!-- 引入配置文件 -->
-	<!-- <bean id="jdbcProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
-	<!-- <property name="location" value="classpath:jdbc.properties"></property> -->
-	<!-- </bean> -->
+	<bean id="jdbcProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location" value="classpath:jdbc.properties"></property>
+	</bean>
 
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 
 		<property name="driverClass">
-			<value>com.microsoft.sqlserver.jdbc.SQLServerDriver</value>
+			<value>${driver}</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:sqlserver://114.55.224.94:1433;databaseName=dbWorkShop3
-			</value>
+			<value>${url}</value>
 		</property>
 		<property name="user">
-			<value>sa</value>
+			<value>${username}</value>
 		</property>
 		<property name="password">
-			<value>Hdu-329</value>
+			<value>${password}</value>
 		</property>
 		<property name="maxPoolSize">
 			<value>80</value>
